@@ -25,3 +25,4 @@ Suggested reading order: prior work → literature map → gap analysis → huma
 - [`industry-trends-2026.md`](industry-trends-2026.md): industry trends and model-level pricing landscape as of March 2026.
 - [`industry-updates-2026-04.md`](industry-updates-2026-04.md): delta update covering pricing, inference compression, and FinOps shifts between mid-March and mid-April 2026.
 - [`skill-domain-evidence-2026.md`](skill-domain-evidence-2026.md): industry data points organized by sales (selling, investment) vs productization skill domain, supporting [`../frameworks/skill-domain-taxonomy.md`](../frameworks/skill-domain-taxonomy.md).
+- [`skill-domain-deep-dive-2026.md`](skill-domain-deep-dive-2026.md): subdomain depth (RFP, account planning, customer success, VC sourcing, public equity, hedge fund quant, ESG, design, QA, security, SRE, data/ML, docs), hybrid workflows (marketing ops, customer support tiers, DevRel), Korea/APAC context, and compliance/regulatory cost overlay.

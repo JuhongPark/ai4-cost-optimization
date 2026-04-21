@@ -131,3 +131,9 @@ The order above is the domain-neutral default. The two skill domains defined in 
 - in the **sales** domain (selling and investment), human escalation policy moves up (no automated verifier exists at the relevant fidelity, and the human is the action gate)
 
 The full per-domain priority orders are documented in [`skill-domain-taxonomy.md`](skill-domain-taxonomy.md) §4.8. When a benchmark or scenario is associated with one domain, that per-domain order should be used instead of the universal one above.
+
+### Productization Sub-Split on the Verifier-Cost Axis
+
+Productization is not uniform on the verifier-cost axis. The cheap-verifier end (coding, QA/testing, structural data pipelines, code-derived documentation) is where the productization priority order above applies most cleanly. The expensive-verifier end (design / UX-UI, conceptual technical writing, semantic data-quality review) sits closer to the sales-domain priority order on the verification axis: verification policy weakens because the binding cost is the human reviewer's judgment, not the cost of running an automated check.
+
+When applying the strategy taxonomy inside productization, the relevant question is not only "which domain" but "where on the verifier-cost axis does this subdomain sit." The empirical 2026 evidence behind this split is in [`../references/skill-domain-deep-dive-2026.md`](../references/skill-domain-deep-dive-2026.md), and it is registered as Gap 8 in [`../references/gap-analysis.md`](../references/gap-analysis.md).

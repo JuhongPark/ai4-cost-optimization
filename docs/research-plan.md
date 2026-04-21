@@ -303,7 +303,7 @@ References and reading notes:
 - [`references/prior-work.md`](references/prior-work.md), [`references/literature-map.md`](references/literature-map.md), and [`references/gap-analysis.md`](references/gap-analysis.md) — prior work and gaps.
 - [`references/human-oversight-optimization.md`](references/human-oversight-optimization.md) and [`references/human-oversight-literature-review.md`](references/human-oversight-literature-review.md) — human oversight notes.
 - [`references/mit-research-landscape.md`](references/mit-research-landscape.md) and [`references/mit-sdm-related-work.md`](references/mit-sdm-related-work.md) — MIT landscape.
-- [`references/industry-trends-2026.md`](references/industry-trends-2026.md), [`references/industry-updates-2026-04.md`](references/industry-updates-2026-04.md), and [`references/skill-domain-evidence-2026.md`](references/skill-domain-evidence-2026.md) — industry trends, latest delta, and skill-domain-organized evidence.
+- [`references/industry-trends-2026.md`](references/industry-trends-2026.md), [`references/industry-updates-2026-04.md`](references/industry-updates-2026-04.md), [`references/skill-domain-evidence-2026.md`](references/skill-domain-evidence-2026.md), and [`references/skill-domain-deep-dive-2026.md`](references/skill-domain-deep-dive-2026.md) — industry trends, latest delta, skill-domain-organized evidence, and subdomain/hybrid/Korea-APAC/compliance deep dive.
 
 Reports and synthesis:
 

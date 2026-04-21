@@ -91,6 +91,46 @@ The default failure taxonomy is:
 - `unrecovered_workflow_failure`
 - `human_escalation`
 
+Domain-specific failure categories (productization-domain modes such as `agentic_resource_exhaustion` and `instruction_drift`, sales-domain modes such as `deliverability_collapse`, `icp_drift`, `regulatory_exposure`, `citation_but_wrong`, and `mnpi_handling_breach`) are defined in [`failure-taxonomy.md`](failure-taxonomy.md) §Domain-Specific Failure Modes and may be used as primary categories when an episode's domain warrants them.
+
+## Domain-Specific Extension Fields
+
+The fields above are required for every episode and are domain-neutral. The two skill domains defined in [`skill-domain-taxonomy.md`](skill-domain-taxonomy.md) carry additional state that should be logged when the benchmark or scenario sits in that domain. Extension fields are optional in the schema and present only when the episode's domain warrants them.
+
+### Productization Extension Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `skill_domain` | enum | `productization` for episodes in this group. |
+| `build_status` | enum or null | `passed`, `failed`, or `not_run` for the final build state. |
+| `test_pass_count` | integer or null | Number of tests passing at episode end. |
+| `test_fail_count` | integer or null | Number of tests failing at episode end. |
+| `type_check_status` | enum or null | `passed`, `failed`, or `not_run`. |
+| `agent_turn_count` | integer or null | Number of plan-and-act turns the agent took. |
+| `accumulated_context_tokens` | integer or null | Peak input-context size carried into a single request. |
+| `verifier_loop_count` | integer or null | Number of verifier-driven self-correction loops. |
+| `pr_review_status` | enum or null | `pending`, `approved`, `changes_requested`, or `merged`. |
+
+These fields support analysis of agentic resource exhaustion, instruction drift across long trajectories, and the empirical observation that token cost per turn scales non-linearly with accumulated context (see [`../references/skill-domain-evidence-2026.md`](../references/skill-domain-evidence-2026.md)).
+
+### Sales Extension Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `skill_domain` | enum | `sales` for episodes in this group. |
+| `artifact_tier` | enum | Tier label such as `cold_sequence`, `named_account_proposal`, `investment_memo_section`, `ic_memo`, `due_diligence_package`. |
+| `human_edit_distance` | float or null | Normalized edit distance between AI draft and final human-shipped artifact, when measurable. |
+| `human_review_depth` | enum or null | `surface_skim`, `line_edit`, `substantive_rewrite`, or `discarded`. |
+| `time_to_counterparty_seconds` | float or null | Time between artifact generation and external send; useful for distinguishing batch outbound from real-time assist. |
+| `deliverability_score` | float or null | Sender-domain deliverability or list-health metric at episode time, when applicable. |
+| `citation_density` | float or null | Number of source-anchored claims per artifact section, for investment-domain artifacts. |
+| `citation_check_minutes` | float or null | Human time spent verifying citations during review. |
+| `deal_stage` | enum or null | `prospect`, `qualified`, `proposal`, `negotiation`, `closed_won`, `closed_lost`, or investment-side equivalents (`screening`, `dd`, `ic`, `closed`, `passed`). |
+| `async_outcome_reference` | string or null | Identifier for the delayed outcome record (reply event, meeting booked, deal close, fund return) so that asynchronous outcome arrival can be joined back to the episode. |
+| `async_outcome_arrival_seconds` | float or null | Time between artifact send and outcome-event arrival, when known. |
+
+These fields support the sales-domain reality that the success signal is delayed by weeks to months, that artifact tiers carry very different review depth, and that fat-tailed regulatory or deliverability failures are workflow-wide rather than per-episode.
+
 ## Recommended Storage Format
 
-The simplest recommended format is one JSON object per episode with nested attempt records. A tabular export can then be derived for analysis.
+The simplest recommended format is one JSON object per episode with nested attempt records. A tabular export can then be derived for analysis. When extension fields are present, they should sit at the same level as the core episode fields so that downstream aggregators can join them into per-domain reports without schema migrations.

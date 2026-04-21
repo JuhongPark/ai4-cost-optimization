@@ -66,3 +66,26 @@ The default analytical view should be a frontier rather than a single ranking. A
 ## Interpretation Rule
 
 No policy should be called better by default unless it is clear which cost component improved and which constraints remained fixed.
+
+## Fat-Tail and Domain-Conditioned Reporting
+
+The mean-centered reporting layers above are adequate for productization-domain workloads where failure cost is bounded and approximately thin-tailed. The sales domain defined in [`skill-domain-taxonomy.md`](skill-domain-taxonomy.md) violates this assumption: deliverability collapse, regulatory exposure, MNPI mishandling, and brand reputation damage have failure-cost distributions where the upper tail dominates the mean. Reporting only the mean systematically understates the true expected total cost.
+
+For sales-domain episodes (and for productization episodes prone to agentic resource exhaustion), the following additions are recommended:
+
+- report `p50`, `p95`, and `p99` for direct cost per episode and for human review minutes per episode in addition to the mean
+- report `CVaR` (conditional value at risk) at `p95` or `p99` for any cost line known to be fat-tailed in the relevant domain
+- report a separate `tail_event_rate` for workflow-level catastrophic failures (e.g., domain deliverability collapse, MNPI exposure) whose blast radius is broader than the failing episode itself
+- when comparing policies across domains, do not collapse the two domains onto the same mean-cost-per-episode plot; mean-cost summaries are not comparable when their tail mass differs
+
+The two productization extension fields most relevant here are `agent_turn_count` and `accumulated_context_tokens`. The two sales extension fields most relevant here are `deliverability_score` and `async_outcome_reference`. Aggregators should expose these by default for any episode that carries them.
+
+## Cross-Domain Comparability
+
+Cross-domain frontier plots are misleading because the verification mechanism, feedback-loop length, and human-cost asymmetry differ. When a comparison is needed across domains, it should be done at the level of:
+
+- a domain-specific cost vector reported per domain
+- a normalized success rate against the domain's own quality threshold
+- a separate tail-risk indicator per domain
+
+A single weighted total cost should not be used to rank policies across domains.

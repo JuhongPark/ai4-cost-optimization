@@ -60,6 +60,32 @@ Why it matters:
 - human time is often the highest-value resource in deployment
 - escalation policy is one of the central cost questions in real workflows
 
+## Gap 7: Sales-domain workflows are under-represented in cost-optimization work
+
+The AI cost-optimization literature, benchmarks, and open-source tooling are heavily concentrated in the productization domain defined in [`../frameworks/skill-domain-taxonomy.md`](../frameworks/skill-domain-taxonomy.md). SWE-Bench, HumanEval, MBPP, GAIA, τ-bench, and the published agentic-coding economics (OpenHands, Vantage, Anthropic's Claude Code trends) give the productization domain a dense measurement and comparison surface. The sales domain (selling and investment) has much thinner public infrastructure:
+
+- there is no SWE-Bench equivalent that captures the full outbound-to-reply, proposal-to-close, or IC-memo-to-fund-return loop
+- vendor-published pricing is predominantly seat-based with AI usage absorbed into the seat, so per-task cost is not directly exposed to external researchers
+- failure modes (deliverability collapse, ICP drift, MNPI mishandling, regulatory exposure) are fat-tailed and realize only weeks to years after the action, so comparable episode-level logging is rare in public datasets
+
+Why it matters:
+
+- the repository's three original scenarios in [`../reports/industry-scenarios.md`](../reports/industry-scenarios.md) (code generation, document extraction, classification) all fall inside the productization domain, so strategy comparisons calibrated on them may not transfer to the sales domain
+- the human-escalation strategy family is the dominant lever in the sales domain but has been validated mostly in productization-adjacent benchmarks; the priority reordering in [`../frameworks/skill-domain-taxonomy.md`](../frameworks/skill-domain-taxonomy.md) §4.8 needs sales-domain empirical backing before it can be treated as more than a hypothesis
+- proxy benchmarks like FinanceBench, LegalBench, and τ-bench stress pieces of the sales-domain loop but do not cover its defining properties (delayed outcome signal, fat-tailed failure cost, human-as-action-gate)
+
+A concrete contribution this repository can make is a **proposed minimal sales-domain benchmark design** that captures at least one of the three defining properties, rather than running cost-quality comparisons on inadequate proxies.
+
+## Gap 8: Productization is not uniform on the verifier-cost axis
+
+Even inside the productization domain, the verifier cost spans the full range observed between coding and sales. Coding, QA/testing, code-derived documentation, and structural data-pipeline work sit at the cheap-verifier end (compile, test, lint, schema contracts). Design (UX/UI), conceptual technical writing, and semantic data-quality review sit at the expensive-verifier end, where the reviewer is a human and the verifier-cost economics match the sales domain.
+
+Why it matters:
+
+- the verification-policy strategy is a top-priority lever for part of the productization domain but weakens sharply in design, conceptual docs, and semantic data review
+- vendor pricing reflects this — design tools (Figma, v0, Galileo) price in flat tiers that absorb usage variance, similar to sales and investment tooling, precisely because the binding cost is the human reviewer's time rather than the generation cost
+- scenario and strategy recommendations should be qualified by the productization sub-domain's verifier position, not only by the top-level domain
+
 ## Implications for This Repository
 
 The repository should prioritize research outputs that directly address these gaps:

@@ -174,7 +174,53 @@ The repository's current strategy priority order in [`strategy-taxonomy.md`](str
 
 The headline shift: verification policy is the second-strongest lever in productization but the second-weakest in sales, while human escalation is the inverse.
 
-## 5. Where the Existing Repository Already Aligns
+## 5. Productization Sub-Split on the Verifier-Cost Axis
+
+The productization domain is not uniform. The 2026 subdomain evidence in [`../references/skill-domain-deep-dive-2026.md`](../references/skill-domain-deep-dive-2026.md) §2 shows that verifier cost inside productization spans the same range as the coding-vs-sales gap.
+
+| Productization subdomain | Verifier cost | Closest analogue |
+| --- | --- | --- |
+| Coding (IDE and agentic) | LOW | Coding |
+| QA / testing | LOW | Coding |
+| Docs (code-derived) | LOW | Coding |
+| ML / data (structural) | LOW | Coding |
+| Security / IAM | MEDIUM | Coding-with-human-gate |
+| SRE / incident | MEDIUM | Operations |
+| ML / data (semantic) | HIGH | Sales |
+| Design (UX/UI) | HIGH | Sales |
+| Docs (conceptual) | HIGH | Sales |
+
+The cheap-verifier end is where the productization-default strategy priority order in §4.8 applies most cleanly. The expensive-verifier end — design, conceptual docs, semantic data work — sits closer to the sales-domain priority order on the verification axis because the binding cost is the human reviewer's judgment rather than the cost of running an automated check. Pricing models confirm the split: design and conceptual-docs vendors (Figma, v0, Mintlify Enterprise) price in flat tiers that absorb usage variance, similar to sales and investment tooling, while QA and structural-security tools price per-event or per-seat with explicit overage. This is registered as Gap 8 in [`../references/gap-analysis.md`](../references/gap-analysis.md) and should inform strategy-comparison design inside the productization domain.
+
+## 6. Time-to-Feedback as a First-Class Dimension
+
+The four dimensions in §3 include feedback-loop length, but the full spectrum warrants being made explicit because it determines how aggressive retry and refinement policies can be.
+
+| Workflow class | Time-to-feedback | Retry/refinement feasibility |
+| --- | --- | --- |
+| Productization (cheap-verifier subdomains) | Seconds to minutes (REPL, CI, test suite) | Aggressive; verifier gives clean stop signal |
+| Productization (expensive-verifier subdomains) | Minutes to hours (designer review, data-steward review) | Moderate; verifier is a human |
+| Hybrid (customer support L1, DevRel) | Seconds to minutes at the episode level; days for true outcome (customer satisfaction, ticket reopen rate) | Aggressive at the episode, moderate for outcome-conditioned retries |
+| Hybrid (marketing operations) | Hours to days (open rates, click rates) | Moderate; A/B harnesses approximate faster feedback |
+| Sales (selling) | Weeks (reply, meeting booked, pipeline movement) | Limited at the output stage; feedback dominated by human review before send |
+| Sales (investment IC memo) | Weeks to months (IC decision, deal close) | Limited; dominated by analyst and partner review |
+| Sales (investment outcome) | Months to years (deal performance, fund return) | Effectively zero at the LLM stage; applies only at portfolio-level post-mortem |
+
+This ties back to the logging-schema extension in [`logging-schema.md`](logging-schema.md) §Sales Extension Fields, which adds `async_outcome_reference` and `async_outcome_arrival_seconds` precisely because the sales-domain feedback signal arrives on a different timescale than the episode it refers to.
+
+## 7. Compliance Overlay as a Third Cost Layer
+
+Direct cost and indirect cost cover the inside of the workflow. A third layer — compliance overlay — sits across both and is shaped by the regulatory regime applicable to the artifact, not the artifact itself. The evidence is in [`../references/skill-domain-deep-dive-2026.md`](../references/skill-domain-deep-dive-2026.md) §5. The summary:
+
+| Domain | Cost shape | Overlay strategy | Annual overlay band |
+| --- | --- | --- | --- |
+| Sales | Per-event fat-tail (penalties scale linearly with message/call count) | Convert unbounded tail into bounded fixed cost via consent platform + suppression + DPIA + legal review | $150K-$500K/yr |
+| Investment | Per-incident catastrophic (single MNPI leak or AI-washing claim is multi-million) | Reduce tail probability via PBAC + telemetry retention + substantiation files + human sign-off | $200K-$1M/yr |
+| Productization | Structural / amortized (audits, conformity assessment, license scanning, FedRAMP) | Pay once for market access, then maintain; volume-independent | $300K-$1.5M one-time + $150K-$400K/yr maintenance |
+
+The cost-aggregation rules in [`cost-aggregation.md`](cost-aggregation.md) §Fat-Tail and Domain-Conditioned Reporting cover the per-episode side of compliance-shaped cost. The compliance overlay itself should be tracked as an annualized cost line that scales with the regulatory regime, not with episode count.
+
+## 8. Where the Existing Repository Already Aligns
 
 This domain split does not contradict the existing repository; it specializes it.
 
@@ -183,19 +229,19 @@ This domain split does not contradict the existing repository; it specializes it
 - [`../reports/research-questions-v2.md`](../reports/research-questions-v2.md) Q3 ("How task-specific is the optimal policy?") is the natural home for this lens. The Sales-vs-Productization split is one concrete instance of the task-specificity hypothesis.
 - [`../reports/practitioner-guidance.md`](../reports/practitioner-guidance.md) rule 5 ("Start with routing and verification before complex orchestration") is well-supported in the productization domain and weaker in the sales domain, where verification leverage is limited.
 
-## 6. Boundary and Hybrid Cases
+## 9. Boundary and Hybrid Cases
 
-Some workflows do not sit cleanly in one domain.
+Some workflows do not sit cleanly in one domain. The 2026 evidence in [`../references/skill-domain-deep-dive-2026.md`](../references/skill-domain-deep-dive-2026.md) §3 suggests that hybrid workflows are better treated as a third population than as boundary cases, because they have their own converging pricing pattern (outcome-based per-resolution metering) and their own verifiable-plus-judgment cost split.
 
-- **Marketing operations**: closer to sales than productization. Verification is via downstream metrics (CTR, MQL conversion); human review is by marketers, not engineers.
-- **Customer support**: hybrid. L1 deflection of common technical questions resembles classification routing (productization-adjacent operations); customer-facing escalations resemble sales artifacts. The right cost model is per-tier, not per-product.
-- **Developer relations content**: technical documentation production is closer to productization (verifier exists: code samples must run); community engagement and sales-cycle support are closer to sales.
+- **Marketing operations**: verifiable share approximately 40-50% (subject-line A/B, deliverability, click rate); judgment share approximately 50-60% (brand voice, narrative angle, segmentation). Human handoff approximately 30-50% of generated assets. Pricing is converging on outcome-based (HubSpot Breeze $0.50/resolved conversation from April 2026).
+- **Customer support (L1/L2/L3)**: verifiable share approximately 70-80% of L1 volume, approximately 25% of L2, under 10% of L3. Human handoff: 30-50% on L1, approximately 85% on L2, approximately 100% on L3. Per-resolution pricing ranges from Intercom Fin $0.99 to Zendesk AI $2.00 to Sierra negotiated outcomes. The binding cost constraint in 2026 has migrated from L1 deflection to L2 and L3, where AI's role is fact-assembly for human debuggers.
+- **Developer relations content**: verifiable share approximately 75-85% (API signatures, parameter behavior, version diffs); judgment share approximately 15-25% (architectural recommendations, "is this a bug" calls). Human handoff is the lowest of the three hybrid classes at approximately 5-15%, but those handoffs concentrate the most expensive engineering minutes.
 - **Product analytics and BI**: report generation can resemble extraction (productization-adjacent operations); investment-grade quarterly business reviews resemble investment memos (sales).
 - **Internal compliance and legal review**: closer to sales in failure cost shape (fat-tailed, downstream consequence) but resembles document extraction in operational structure.
 
-For boundary cases, the right move is to characterize the workflow on the four dimensions in §3 (verification mechanism, feedback-loop length, human cost asymmetry, failure cost shape) and apply the per-domain priority that matches the dominant dimensions, rather than forcing a binary classification.
+For true boundary cases, the right move is still to characterize the workflow on the four dimensions in §3 (verification mechanism, feedback-loop length, human cost asymmetry, failure cost shape) plus the two dimensions added in §5-§6 (verifier-cost position, time-to-feedback). Apply the per-domain priority that matches the dominant dimensions rather than forcing a binary classification.
 
-## 7. How to Use This Lens
+## 10. How to Use This Lens
 
 When reading or extending the repository:
 
