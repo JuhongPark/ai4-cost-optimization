@@ -5,7 +5,7 @@ This directory holds the research documentation for the AI cost optimization pro
 ## Layout
 
 - [`research-plan.md`](research-plan.md) — objective, thesis, scope, research questions, and the three-month program.
-- [`frameworks/`](frameworks/README.md) — cost model, evaluation framework, logging schema, policy design space, optimization strategy taxonomy, and sales-vs-productization skill-domain taxonomy.
+- [`frameworks/`](frameworks/README.md) — cost model, evaluation framework, logging schema, policy design space, optimization strategy taxonomy, sales-vs-productization skill-domain taxonomy, and the MIT-SDM-lens system-design frameworks (architecture, lifecycle, operations, economics).
 - [`experiments/`](experiments/README.md) — benchmark design, reusable policy templates, and the first empirical cycle plan.
 - [`references/`](references/README.md) — prior work, gap analysis, human-oversight notes, MIT notes, industry reading notes, and skill-domain-organized 2026 evidence.
 - [`reports/`](reports/README.md) — synthesis documents (including productization and sales-domain industry scenarios), reporting templates, and the forward-looking research backlog.
@@ -17,7 +17,7 @@ This directory holds the research documentation for the AI cost optimization pro
 3. [`frameworks/cost-taxonomy.md`](frameworks/cost-taxonomy.md) and [`frameworks/evaluation-framework.md`](frameworks/evaluation-framework.md) for the working definitions.
 4. [`experiments/first-empirical-cycle-plan.md`](experiments/first-empirical-cycle-plan.md) and [`experiments/policy-comparison-matrix.md`](experiments/policy-comparison-matrix.md) for what is actually being run.
 5. [`reports/research-synthesis.md`](reports/research-synthesis.md) and [`reports/practitioner-guidance.md`](reports/practitioner-guidance.md) for the current synthesis and the operational takeaways.
-6. [`references/industry-trends-2026.md`](references/industry-trends-2026.md), [`references/industry-updates-2026-04.md`](references/industry-updates-2026-04.md), [`references/skill-domain-evidence-2026.md`](references/skill-domain-evidence-2026.md), and [`references/skill-domain-deep-dive-2026.md`](references/skill-domain-deep-dive-2026.md) for the most recent external context, including the skill-domain (sales vs productization) data organization and the subdomain/hybrid/Korea-APAC/compliance deep dive.
+6. [`references/industry-trends-2026.md`](references/industry-trends-2026.md), [`references/industry-updates-2026-04.md`](references/industry-updates-2026-04.md), [`references/skill-domain-evidence-2026.md`](references/skill-domain-evidence-2026.md), [`references/skill-domain-deep-dive-2026.md`](references/skill-domain-deep-dive-2026.md), and [`references/ai-system-design-evidence-2026.md`](references/ai-system-design-evidence-2026.md) for the most recent external context, covering the skill-domain and MIT-SDM-lens system-design evidence.
 
 ## Where Related Code and Data Live
 

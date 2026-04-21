@@ -76,6 +76,27 @@ Why it matters:
 
 A concrete contribution this repository can make is a **proposed minimal sales-domain benchmark design** that captures at least one of the three defining properties, rather than running cost-quality comparisons on inadequate proxies.
 
+## Gap 9: AI systems are not treated as engineered systems
+
+Most cost-optimization work treats the AI system as a black box whose cost behavior is characterized by a small number of workflow-level knobs (model choice, routing, retry, verification). This framing imports very little from traditional systems engineering, where a deployed system is characterized by its architecture, its lifecycle stage, its failure modes and effects analysis, its blast-radius and containment, its operational SLIs and SLOs, and its decision-rights design.
+
+The MIT SDM tradition (system architecture, tradespace exploration, lifecycle costing, engineering management) offers exactly this rigor, and the existing repository note at [`mit-sdm-related-work.md`](mit-sdm-related-work.md) already observes that SDM's contribution to AI cost research is "systems architecture, commercialization, and deployment design" — but the repository has not yet operationalized that observation at the framework level. Specifically:
+
+- architecture decisions (multi-agent topology, memory architecture, orchestration pattern, verification pipeline) are rarely modeled as first-class cost drivers even though they reshape the full workflow cost trajectory
+- lifecycle stage (PoC, pilot, production, steady-state, deprecation) is rarely made explicit even though the cost-quality tradeoff reorders meaningfully at each stage
+- FMEA-style reliability analysis is rare in AI cost-optimization papers even though `Designing Generative Multi-Agent Systems for Resilience` (Dao & Moser, CAS 2025 Best Student Paper) shows the approach transfers and matters
+- observability and SRE-for-AI practice has a large industry literature but is mostly treated as an engineering concern separate from cost; the two converge once error budgets and cost budgets are modeled jointly
+- decision-architecture and team-topology design (who decides what, under which authority gradient, with which team structure) are rarely priced into the cost framework even though Conway's Law and organizational design literature predict them to be load-bearing
+- lifecycle TCO modeling in the MIT SDM tradition (fixed vs marginal, tradespace exploration, real options, depreciation) is largely absent from AI cost work, even though `AI and Scale` (Lashkari, Li, Qiu, Thompson 2026) already demonstrates its relevance
+
+Why it matters:
+
+- architecture choices made at the prototype stage lock in 60-80% of lifetime system cost in traditional engineering; the same principle likely applies to AI systems but has not been quantified
+- lifecycle and operational cost often dominate deployment-level TCO but are invisible in per-episode accounting
+- the most expensive AI failures in 2026 are not model-quality failures but system-level failures: agentic resource exhaustion, provider outage propagation, regulatory exposure from insufficient audit trails, team-topology mismatch between model behavior and human decision rights
+
+The concrete contribution the repository can make is to elevate architecture, lifecycle, reliability engineering, decision architecture, and lifecycle TCO to first-class framework elements — each covered in a dedicated framework doc alongside the existing cost-taxonomy, strategy-taxonomy, and skill-domain-taxonomy. See [`../frameworks/ai-system-architecture.md`](../frameworks/ai-system-architecture.md), [`../frameworks/ai-system-lifecycle.md`](../frameworks/ai-system-lifecycle.md), [`../frameworks/ai-system-operations.md`](../frameworks/ai-system-operations.md), and [`../frameworks/ai-system-economics.md`](../frameworks/ai-system-economics.md).
+
 ## Gap 8: Productization is not uniform on the verifier-cost axis
 
 Even inside the productization domain, the verifier cost spans the full range observed between coding and sales. Coding, QA/testing, code-derived documentation, and structural data-pipeline work sit at the cheap-verifier end (compile, test, lint, schema contracts). Design (UX/UI), conceptual technical writing, and semantic data-quality review sit at the expensive-verifier end, where the reviewer is a human and the verifier-cost economics match the sales domain.

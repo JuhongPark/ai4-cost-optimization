@@ -136,6 +136,33 @@ For this repository, the current working split is:
 - retry and self-correction cost
 - failure recovery and orchestration cost
 
+### Orthogonal Dimension: Fixed vs Marginal Cost
+
+The direct/indirect split above is one axis. A second, orthogonal axis is **fixed vs marginal** cost, the distinction central to MIT FutureTech's `AI and Scale: A Quantitative Task-Based Theory of Automation` (Lashkari, Li, Qiu, Thompson 2026) and to MIT SDM's deployment-design tradition. It is called out separately because a cost can be direct-and-fixed, direct-and-marginal, indirect-and-fixed, or indirect-and-marginal — the axes do not collapse into one another.
+
+- **fixed cost** is incurred once per deployment (or once per significant system change) and is independent of per-episode task volume:
+  - integration, prompt/context design, tool schema design
+  - evaluation harness construction and golden-set curation
+  - compliance audit (SOC 2, ISO 27001, FedRAMP, EU AI Act conformity)
+  - people: AI Platform Engineer, Eval Engineer, AI SRE hiring and enablement
+  - switching cost when the system migrates between vendors, models, or architectures
+- **semi-fixed (step) cost** jumps when the system crosses a boundary but is flat between jumps:
+  - a new regulatory jurisdiction (adds per-jurisdiction compliance overlay)
+  - a new tenant tier (adds per-tier observability and isolation infrastructure)
+  - a new use case (adds per-use-case eval suite and prompt library)
+- **marginal cost** scales with per-episode task volume:
+  - tokens, tool API calls, inference serving
+  - per-episode human review minutes
+  - per-episode retry and recovery overhead
+
+This distinction matters because the two axes (direct/indirect × fixed/marginal) interact differently across the skill-domain landscape in [`skill-domain-taxonomy.md`](skill-domain-taxonomy.md):
+
+- the sales domain is dominated by **fixed-cost investments** on the indirect side (legal review capacity, compliance platform, per-tier approval workflows) plus **marginal cost** on the direct side (per-artifact tokens) that is small relative to the fixed investment
+- the productization domain has lower indirect-fixed cost because the automated verifier is a one-time integration, but the direct-marginal cost scales aggressively with agent turn count and can dominate at scale
+- boundary cases are often determined by which axis is binding — some AI systems are rejected at the fixed-cost gate (integration or compliance) and never reach a marginal-cost decision
+
+This fixed-vs-marginal lens is the foundation for [`ai-system-economics.md`](ai-system-economics.md), which uses it as the basis for lifecycle TCO modeling and tradespace exploration.
+
 ## 4. Research Gap
 
 The literature is relatively mature on direct-cost optimization, especially:

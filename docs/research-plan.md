@@ -289,6 +289,7 @@ Frameworks that operationalize this plan:
 - [`frameworks/evaluation-objectives.md`](frameworks/evaluation-objectives.md) — candidate optimization objectives.
 - [`frameworks/policy-design-space.md`](frameworks/policy-design-space.md) and [`frameworks/strategy-taxonomy.md`](frameworks/strategy-taxonomy.md) — design axes and strategy categories.
 - [`frameworks/skill-domain-taxonomy.md`](frameworks/skill-domain-taxonomy.md) — sales vs productization skill-domain lens that reorders strategy priorities by domain.
+- [`frameworks/ai-system-architecture.md`](frameworks/ai-system-architecture.md), [`frameworks/ai-system-lifecycle.md`](frameworks/ai-system-lifecycle.md), [`frameworks/ai-system-operations.md`](frameworks/ai-system-operations.md), and [`frameworks/ai-system-economics.md`](frameworks/ai-system-economics.md) — MIT SDM lens: AI systems as engineered systems with architecture, lifecycle, operations, and economics as first-class cost drivers.
 - [`frameworks/logging-schema.md`](frameworks/logging-schema.md), [`frameworks/cost-aggregation.md`](frameworks/cost-aggregation.md), and [`frameworks/failure-taxonomy.md`](frameworks/failure-taxonomy.md) — operational schemas.
 - [`frameworks/scenario-cost-assumptions.md`](frameworks/scenario-cost-assumptions.md) — scenario-level cost assumptions, including sales-domain scenarios.
 
@@ -303,7 +304,7 @@ References and reading notes:
 - [`references/prior-work.md`](references/prior-work.md), [`references/literature-map.md`](references/literature-map.md), and [`references/gap-analysis.md`](references/gap-analysis.md) — prior work and gaps.
 - [`references/human-oversight-optimization.md`](references/human-oversight-optimization.md) and [`references/human-oversight-literature-review.md`](references/human-oversight-literature-review.md) — human oversight notes.
 - [`references/mit-research-landscape.md`](references/mit-research-landscape.md) and [`references/mit-sdm-related-work.md`](references/mit-sdm-related-work.md) — MIT landscape.
-- [`references/industry-trends-2026.md`](references/industry-trends-2026.md), [`references/industry-updates-2026-04.md`](references/industry-updates-2026-04.md), [`references/skill-domain-evidence-2026.md`](references/skill-domain-evidence-2026.md), and [`references/skill-domain-deep-dive-2026.md`](references/skill-domain-deep-dive-2026.md) — industry trends, latest delta, skill-domain-organized evidence, and subdomain/hybrid/Korea-APAC/compliance deep dive.
+- [`references/industry-trends-2026.md`](references/industry-trends-2026.md), [`references/industry-updates-2026-04.md`](references/industry-updates-2026-04.md), [`references/skill-domain-evidence-2026.md`](references/skill-domain-evidence-2026.md), [`references/skill-domain-deep-dive-2026.md`](references/skill-domain-deep-dive-2026.md), and [`references/ai-system-design-evidence-2026.md`](references/ai-system-design-evidence-2026.md) — industry trends, latest delta, skill-domain-organized evidence, subdomain/hybrid/Korea-APAC/compliance deep dive, and the MIT-SDM-lens system-design evidence.
 
 Reports and synthesis:
 
