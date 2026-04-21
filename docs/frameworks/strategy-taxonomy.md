@@ -122,3 +122,12 @@ The recommended research order is:
 7. serving optimization
 
 This order follows the current thesis that workflow-level cost optimization should be analyzed before lower-level serving refinements dominate the agenda.
+
+### Domain-Conditional Reordering
+
+The order above is the domain-neutral default. The two skill domains defined in [`skill-domain-taxonomy.md`](skill-domain-taxonomy.md) reorder these strategies in opposite directions on the verification and human-escalation axes:
+
+- in the **productization** domain, verification policy moves up (cheap automated tests are the dominant lever)
+- in the **sales** domain (selling and investment), human escalation policy moves up (no automated verifier exists at the relevant fidelity, and the human is the action gate)
+
+The full per-domain priority orders are documented in [`skill-domain-taxonomy.md`](skill-domain-taxonomy.md) §4.8. When a benchmark or scenario is associated with one domain, that per-domain order should be used instead of the universal one above.

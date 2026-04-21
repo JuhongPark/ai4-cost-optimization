@@ -24,3 +24,4 @@ Suggested reading order: prior work → literature map → gap analysis → huma
 
 - [`industry-trends-2026.md`](industry-trends-2026.md): industry trends and model-level pricing landscape as of March 2026.
 - [`industry-updates-2026-04.md`](industry-updates-2026-04.md): delta update covering pricing, inference compression, and FinOps shifts between mid-March and mid-April 2026.
+- [`skill-domain-evidence-2026.md`](skill-domain-evidence-2026.md): industry data points organized by sales (selling, investment) vs productization skill domain, supporting [`../frameworks/skill-domain-taxonomy.md`](../frameworks/skill-domain-taxonomy.md).

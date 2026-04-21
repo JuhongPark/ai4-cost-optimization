@@ -80,6 +80,52 @@ This scenario often makes selective review attractive because blanket human QA i
 
 This scenario is often most sensitive to escalation rate and queue saturation rather than per-call API spend.
 
+## Scenario D: Outbound Selling and Customer Outreach
+
+This scenario sits in the **sales** domain as defined in [`skill-domain-taxonomy.md`](skill-domain-taxonomy.md). It maps to scenario S1 in [`../reports/industry-scenarios.md`](../reports/industry-scenarios.md). Concrete 2026 industry data points are in [`../references/skill-domain-evidence-2026.md`](../references/skill-domain-evidence-2026.md).
+
+### Operational assumption
+
+- no automated verifier exists; the salesperson is the verifier and the action gate
+- outcome signal (reply, meeting booked, pipeline movement) arrives weeks after the action
+- failure modes are fat-tailed: deliverability damage, regulatory exposure, brand reputation
+- artifacts split into tiers (named-account proposals vs cold sequences) with very different review depth and per-artifact cost
+
+### Suggested initial assumptions
+
+- quality gate: human send-approval at the artifact tier appropriate for the outreach
+- one human review event: 2 to 10 minutes for cold sequence; 20 to 60 minutes for named-account proposal
+- unresolved failed episode: medium per-artifact, fat-tailed at the workflow level (deliverability collapse, regulatory exposure)
+- latency penalty: low for batch outbound, high for real-time conversational assist
+- verification cost: high if attempted at AI level (LLM-as-judge catches surface issues only); the dominant verification cost is human time
+
+### Interpretation
+
+This scenario should usually favor policies that minimize the number of artifacts that reach a counterparty without high-quality human review, and that protect shared infrastructure (sending domain reputation, regulatory posture) as a separate cost category from per-artifact spend.
+
+## Scenario E: Investment Research and Due Diligence
+
+This scenario sits in the **sales** domain as defined in [`skill-domain-taxonomy.md`](skill-domain-taxonomy.md). It maps to scenario S2 in [`../reports/industry-scenarios.md`](../reports/industry-scenarios.md).
+
+### Operational assumption
+
+- ground truth resolves over years (deal performance, fund return)
+- the priced human is an analyst or partner-equivalent, with deal sizes in the $10M to $1B+ range
+- citation density is the closest analogue to an automated verifier, but every citation costs analyst review minutes
+- per-task agent runs can consume 0.5 to 2M tokens including retries; per-deal diligence cost the workflow offsets is in the tens to hundreds of thousands of dollars
+
+### Suggested initial assumptions
+
+- quality gate: every cited claim must be traceable to source; partner-level review at IC memo stage
+- one human review event: 5 to 20 minutes per memo section, with citation spot-checks
+- unresolved failed episode: high (cited-but-wrong content reaching IC); fat-tailed at the workflow level (regulatory MNPI handling, fiduciary breach)
+- latency penalty: low for memo drafting, medium for live deal-team workflows
+- verification cost: medium per task (citation review by analyst); cost-effective relative to the per-deal diligence baseline
+
+### Interpretation
+
+This scenario should usually favor multi-model routing (reasoning-tier reserved for evaluation and synthesis, cheaper models for extraction) and per-stage budget caps that prevent agentic-resource-exhaustion on a single deep-research task.
+
 ## Suggested Weighting Profiles
 
 The repository should not use one universal weighted-cost function. It should compare a small number of scenario-aligned profiles.
@@ -130,6 +176,25 @@ Emphasis:
 - human minutes
 - retries
 - moderate failure penalty
+
+### Profile 4: Sales-Domain Setting
+
+Best match:
+
+- outbound selling
+- investment research and due diligence
+
+Emphasis:
+
+- human review minutes (the dominant cost line)
+- fat-tailed failure cost (deliverability collapse, MNPI mishandling)
+- shared-infrastructure cost (sending domain reputation, compliance posture)
+- per-artifact-tier differentiation (cold sequence vs named-account proposal vs IC memo)
+
+De-emphasis:
+
+- per-call API spend at low artifact tiers (it is dominated by seat and integration cost)
+- aggressive automated retry without human gating
 
 ## Sensitivity Analysis Rule
 

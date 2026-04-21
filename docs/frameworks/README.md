@@ -2,7 +2,7 @@
 
 This directory stores evaluation frameworks, metric definitions, and cost models used in the research.
 
-Suggested reading order: cost taxonomy → evaluation framework → evaluation objectives → policy design space → strategy taxonomy → logging schema → cost aggregation → failure taxonomy → scenario cost assumptions.
+Suggested reading order: cost taxonomy → evaluation framework → evaluation objectives → policy design space → strategy taxonomy → skill domain taxonomy → logging schema → cost aggregation → failure taxonomy → scenario cost assumptions.
 
 ## Foundations
 
@@ -14,6 +14,7 @@ Suggested reading order: cost taxonomy → evaluation framework → evaluation o
 
 - [`policy-design-space.md`](policy-design-space.md): explicit design axes for model, routing, verification, retry, tools, and oversight.
 - [`strategy-taxonomy.md`](strategy-taxonomy.md): categories of optimization strategies compared across experiments.
+- [`skill-domain-taxonomy.md`](skill-domain-taxonomy.md): sales (selling and investment) vs productization (product implementation) skill-domain split that reorders strategy priorities by domain.
 
 ## Operational Schemas
 
