@@ -21,3 +21,7 @@ This directory stores synthesis documents, reporting templates, and forward-look
 - [`research-questions-v2.md`](research-questions-v2.md): narrowed investigation-ready research questions for the next cycle.
 - [`research-backlog.md`](research-backlog.md): prioritized next investigation queue after the first empirical cycle.
 - [`future-roadmap.md`](future-roadmap.md): next-step roadmap after the first research cycle.
+
+## Special Topics
+
+- [`healthcare-bio-ai-special-topic.md`](healthcare-bio-ai-special-topic.md): applies the cost-taxonomy, skill-domain, and MIT-SDM-lens frameworks to healthcare, hospital, and pharmaceutical AI. Maps six healthcare-bio scenarios (ambient scribing, imaging second reader, CDS / sepsis alerting, prior authorization, drug discovery, clinical trial protocol design) onto the existing framework, extends the compliance-overlay and lifecycle layers with sector-specific additions, and illustrates an FMEA AP analysis for scribing hallucination. Evidence base: [`../references/healthcare-bio-ai-evidence-2026.md`](../references/healthcare-bio-ai-evidence-2026.md).

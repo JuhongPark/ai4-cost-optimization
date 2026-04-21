@@ -19,6 +19,12 @@ This directory holds the research documentation for the AI cost optimization pro
 5. [`reports/research-synthesis.md`](reports/research-synthesis.md) and [`reports/practitioner-guidance.md`](reports/practitioner-guidance.md) for the current synthesis and the operational takeaways.
 6. [`references/industry-trends-2026.md`](references/industry-trends-2026.md), [`references/industry-updates-2026-04.md`](references/industry-updates-2026-04.md), [`references/skill-domain-evidence-2026.md`](references/skill-domain-evidence-2026.md), [`references/skill-domain-deep-dive-2026.md`](references/skill-domain-deep-dive-2026.md), and [`references/ai-system-design-evidence-2026.md`](references/ai-system-design-evidence-2026.md) for the most recent external context, covering the skill-domain and MIT-SDM-lens system-design evidence.
 
+## Special Topics
+
+Sector-specific extensions that apply the main frameworks without joining the main research spine:
+
+- [`reports/healthcare-bio-ai-special-topic.md`](reports/healthcare-bio-ai-special-topic.md) and [`references/healthcare-bio-ai-evidence-2026.md`](references/healthcare-bio-ai-evidence-2026.md): healthcare, hospital, and pharmaceutical AI — FDA SaMD / PCCP, EU AI Act × MDR/IVDR, ambient scribing, imaging second reader (NHS EDITH), clinical decision support, prior authorization, drug discovery (AlphaFold 3 / IsoDDE), clinical trial design, pharmacovigilance. Applies cost-taxonomy, skill-domain, and MIT-SDM-lens frameworks.
+
 ## Where Related Code and Data Live
 
 - [`../configs/`](../configs/README.md) — benchmark, policy, provider, scenario, and study configuration files.
