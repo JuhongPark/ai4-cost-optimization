@@ -18,7 +18,6 @@ Suggested reading order: prior work → literature map → gap analysis → huma
 ## MIT Landscape
 
 - [`mit-research-landscape.md`](mit-research-landscape.md): MIT labs, programs, and researchers relevant to AI cost optimization.
-- [`mit-sdm-related-work.md`](mit-sdm-related-work.md): MIT SDM-specific related work relevant to deployment, resilience, and commercialization.
 
 ## Industry Landscape
 

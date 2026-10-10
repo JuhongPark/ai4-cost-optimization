@@ -208,3 +208,6 @@ __marimo__/
 
 # Claude Code
 CLAUDE.md
+
+# Local files
+/docs/references/mit-sdm-related-work.md

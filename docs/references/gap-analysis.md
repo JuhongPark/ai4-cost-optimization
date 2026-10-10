@@ -80,7 +80,7 @@ A concrete contribution this repository can make is a **proposed minimal sales-d
 
 Most cost-optimization work treats the AI system as a black box whose cost behavior is characterized by a small number of workflow-level knobs (model choice, routing, retry, verification). This framing imports very little from traditional systems engineering, where a deployed system is characterized by its architecture, its lifecycle stage, its failure modes and effects analysis, its blast-radius and containment, its operational SLIs and SLOs, and its decision-rights design.
 
-The MIT SDM tradition (system architecture, tradespace exploration, lifecycle costing, engineering management) offers exactly this rigor, and the existing repository note at [`mit-sdm-related-work.md`](mit-sdm-related-work.md) already observes that SDM's contribution to AI cost research is "systems architecture, commercialization, and deployment design" — but the repository has not yet operationalized that observation at the framework level. Specifically:
+The MIT SDM tradition (system architecture, tradespace exploration, lifecycle costing, engineering management) offers this rigor. The repository has not yet operationalized systems architecture, commercialization, and deployment design at the framework level. Specifically:
 
 - architecture decisions (multi-agent topology, memory architecture, orchestration pattern, verification pipeline) are rarely modeled as first-class cost drivers even though they reshape the full workflow cost trajectory
 - lifecycle stage (PoC, pilot, production, steady-state, deprecation) is rarely made explicit even though the cost-quality tradeoff reorders meaningfully at each stage

@@ -222,7 +222,7 @@ This note is organized by framework topic, not chronologically. For chronologica
 
 ## 15. MIT SDM Anchors
 
-The repository's existing MIT SDM note at [`mit-sdm-related-work.md`](mit-sdm-related-work.md) already identifies SDM's contribution as "systems architecture, commercialization, and deployment design." This evidence reference operationalizes that contribution across the four framework documents.
+This evidence reference applies systems architecture, commercialization, and deployment design across the four framework documents.
 
 - Barua SM SDM thesis — `A strategic perspective on the commercialization of artificial intelligence`. https://sdm.mit.edu/research-practice/thesis-a-strategic-perspective-on-the-commercialization-of-artificial-intelligence/
 - Dao SM SDM — `Designing Generative Multi-Agent Systems for Resilience`, CAS 2025 Best Student Paper (coauthor Dr. Bryan Moser).
